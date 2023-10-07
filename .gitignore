@@ -1,0 +1,7 @@
+.vscode/*
+!.vscode/settings.json
+
+target/
+.DS_Store
+.tmp
+.envrc

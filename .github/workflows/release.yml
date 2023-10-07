@@ -1,0 +1,56 @@
+name: Build examples
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/vita-rust/vitasdk-rs
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build
+        run: |
+          cargo vita build vpk --release --package vita-std-tests --tests
+          cargo vita build vpk --release
+          mv target/armv7-sony-vita-newlibeabihf/release/deps/*.vpk target/armv7-sony-vita-newlibeabihf/release/
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: examples
+          path: target/armv7-sony-vita-newlibeabihf/release/*.vpk
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: examples
+      - name: Delete old release assets
+        uses: mknejp/delete-release-assets@v1
+        with:
+          token: ${{ github.token }}
+          tag: latest
+          assets: '*'
+          fail-if-no-release: false
+          fail-if-no-assets: false
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Latest
+          body: >
+            This release is automatically updated by a Github Action on every push to the main branch.
+          tag_name: latest
+          generate_release_notes: false
+          files: |
+            *.vpk

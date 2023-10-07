@@ -1,0 +1,17 @@
+[workspace]
+members = ["./crates/*"]
+resolver = "2"
+
+[profile.release]
+panic = 'unwind'
+lto = true
+opt-level = 2
+
+[patch.crates-io]
+mio = { git = "https://github.com/vita-rust/mio", branch = "vita" }
+tokio = { git = "https://github.com/vita-rust/tokio", branch = "vita" }
+socket2053 = { git = "https://github.com/vita-rust/socket2", branch = "v0.5.3-vita", package = "socket2", version = "0.5.3" }
+socket2049 = { git = "https://github.com/vita-rust/socket2", branch = "v0.4.9-vita", package = "socket2", version = "0.4.9" }
+
+# Required for rustls
+ring = { git = "https://github.com/vita-rust/ring", branch = "v0.16.20-vita" }

@@ -1,0 +1,14 @@
+[package]
+name = "vita-example-cross-isa"
+version = "0.1.0"
+edition = "2021"
+
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/vita-rust/examples"
+homepage = "https://github.com/vita-rust/examples/crates/1-cross-isa"
+
+[dependencies]
+
+[package.metadata.vita]
+title_id = "RUSTTEST1"
+title_name = "Rust cross-isa test"
