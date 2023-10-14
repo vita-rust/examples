@@ -1,0 +1,17 @@
+[package]
+name = "vita-example-sdl"
+version = "0.1.0"
+edition = "2021"
+
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/vita-rust/examples"
+homepage = "https://github.com/vita-rust/examples/crates/3-sdl"
+
+description = "An adapted Sdl2 game of life example (https://github.com/Rust-SDL2/rust-sdl2/blob/master/examples/game-of-life.rs)"
+
+[dependencies]
+sdl2 = { version = "0.35.2", features = ["use-pkgconfig"] }
+
+[package.metadata.vita]
+title_id = "RUSTTEST3"
+title_name = "Rust sdl2 test"
