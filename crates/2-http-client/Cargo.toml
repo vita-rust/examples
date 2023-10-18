@@ -19,7 +19,7 @@ reqwest = { version = "0.11", default-features = false, features = ["json"] }
 tokio = { version = "1", features = ["macros", "rt", "net"] }
 oxhttp = { version = "0.2.0-alpha.1", features = ["rustls", "webpki-roots"] }
 ureq = { version = "2.7.1", default-features = false, features = ["gzip"] }
-vita-newlib-shims = { version = "0.3", features = ["fcntl"] }
+vita-newlib-shims = { version = "0.3" }
 
 [package.metadata.vita]
 title_id = "RUSTTEST2"
