@@ -211,16 +211,13 @@ pub fn main() -> Result<(), String> {
     let available = controller_subsystem
         .num_joysticks()
         .map_err(|e| format!("can't enumerate joysticks: {}", e))?;
-    let controller = (0..available)
+    let _controller = (0..available)
         .find_map(|id| {
             if !controller_subsystem.is_game_controller(id) {
                 return None;
             }
 
-            match controller_subsystem.open(id) {
-                Ok(c) => Some(c),
-                Err(e) => None,
-            }
+            controller_subsystem.open(id).ok()
         })
         .expect("Couldn't open any controller");
 

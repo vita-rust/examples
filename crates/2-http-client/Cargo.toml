@@ -8,8 +8,7 @@ repository = "https://github.com/vita-rust/examples"
 homepage = "https://github.com/vita-rust/examples/crates/2-http-client"
 
 [features]
-default = ["rustls", "shims"]
-shims = ["vita-newlib-shims"]
+default = ["rustls"]
 rustls = ["reqwest/rustls-tls", "oxhttp/rustls"]
 openssl = ["reqwest/native-tls"]
 
@@ -18,9 +17,9 @@ anyhow = "1.0"
 libc = "0.2.149"
 reqwest = { version = "0.11", default-features = false, features = ["json"] }
 tokio = { version = "1", features = ["macros", "rt", "net"] }
-oxhttp = { version = "0.1.7", features = ["rustls"] }
+oxhttp = { version = "0.2.0-alpha.1", features = ["rustls", "webpki-roots"] }
 ureq = { version = "2.7.1", default-features = false, features = ["gzip"] }
-vita-newlib-shims = { version = "0.2", optional = true }
+vita-newlib-shims = { version = "0.3", features = ["fcntl"] }
 
 [package.metadata.vita]
 title_id = "RUSTTEST2"

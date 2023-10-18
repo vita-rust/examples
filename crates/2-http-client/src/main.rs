@@ -1,4 +1,4 @@
-#[cfg(all(target_os = "vita", feature = "shims"))]
+#[cfg(all(target_os = "vita"))]
 use vita_newlib_shims as _;
 
 use oxhttp::{
@@ -17,6 +17,7 @@ fn main() -> anyhow::Result<()> {
         .enable_all()
         .build()?
         .block_on(async {
+            println!(">>>");
             println!(">>> Trying oxhttp");
             let client = Client::new();
             let body = client
@@ -25,11 +26,12 @@ fn main() -> anyhow::Result<()> {
                 .to_string()?;
             println!(">>> oxhttp response: {body}");
 
-            // Requires std to depend on the latest libc
-            // println!(">>> Trying ureq");
-            // let body = ureq::get("http://example.com").call()?;
-            // println!(">>> Ureq response: {:?}", body);
+            println!(">>>");
+            println!(">>> Trying ureq");
+            let res = ureq::get("http://example.com").call()?.into_string()?;
+            println!(">>> Ureq response: {:?}", res);
 
+            println!(">>>");
             println!(">>> Trying reqwest");
             let body = reqwest::get("https://example.com").await?.text().await?;
             println!(">>> Reqwest response: {:#?}", body);
