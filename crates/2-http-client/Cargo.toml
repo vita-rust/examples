@@ -13,13 +13,22 @@ rustls = ["reqwest/rustls-tls", "oxhttp/rustls"]
 openssl = ["reqwest/native-tls"]
 
 [dependencies]
-anyhow = "1.0"
+# No need for shims with latest VITASDK
+vita-newlib-shims = { version = "0.3" }
+
+# Force cargo to use at least these versions of transitive dependencies.
+# You can either do `cargo update`, or specify them here.
 libc = "0.2.149"
+mio = "0.8.9"
+socket2 = "0.5.5"
+socket24 = { version = "0.4.10", package = "socket2"}
+
+# Actual dependencies
+anyhow = "1.0"
 reqwest = { version = "0.11", default-features = false, features = ["json"] }
 tokio = { version = "1", features = ["macros", "rt", "net"] }
 oxhttp = { version = "0.2.0-alpha.1", features = ["rustls", "webpki-roots"] }
 ureq = { version = "2.7.1", default-features = false, features = ["gzip"] }
-vita-newlib-shims = { version = "0.3" }
 
 [package.metadata.vita]
 title_id = "RUSTTEST2"

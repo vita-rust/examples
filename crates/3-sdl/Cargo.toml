@@ -10,6 +10,8 @@ homepage = "https://github.com/vita-rust/examples/crates/3-sdl"
 description = "An adapted Sdl2 game of life example (https://github.com/Rust-SDL2/rust-sdl2/blob/master/examples/game-of-life.rs)"
 
 [dependencies]
+# Using pkgconfig is necessary for correct linking for all native dependencies.
+# sdl2 uses "use-pkgconfig" feature for that.
 sdl2 = { version = "0.35.2", features = ["use-pkgconfig"] }
 
 [package.metadata.vita]

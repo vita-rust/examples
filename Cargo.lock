@@ -324,7 +324,7 @@ dependencies = [
  "httpdate",
  "itoa",
  "pin-project-lite",
- "socket2 0.4.9",
+ "socket2 0.4.10",
  "tokio",
  "tower-service",
  "tracing",
@@ -446,10 +446,12 @@ dependencies = [
 
 [[package]]
 name = "mio"
-version = "0.8.8"
-source = "git+https://github.com/vita-rust/mio?branch=vita#099c9c8da9554e80744b23a49c915631a8fe4672"
+version = "0.8.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3dce281c5e46beae905d4de1870d8b1509a9142b62eedf18b443b011ca8343d0"
 dependencies = [
  "libc",
+ "log",
  "wasi",
  "windows-sys",
 ]
@@ -864,8 +866,9 @@ dependencies = [
 
 [[package]]
 name = "socket2"
-version = "0.4.9"
-source = "git+https://github.com/rust-lang/socket2?branch=v0.4.x#03211da88f443ef2cb2d30e818a9a04b0d4e7175"
+version = "0.4.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9f7916fc008ca5542385b89a3d3ce689953c143e9304a9bf8beec1de48994c0d"
 dependencies = [
  "libc",
  "winapi",
@@ -873,8 +876,9 @@ dependencies = [
 
 [[package]]
 name = "socket2"
-version = "0.5.4"
-source = "git+https://github.com/rust-lang/socket2?branch=master#f61a788b887c4bad8b2333fed883d5a4ff16d3b5"
+version = "0.5.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b5fac59a5cb5dd637972e5fca70daf0523c9067fcdc4842f053dae04a18f8e9"
 dependencies = [
  "libc",
  "windows-sys",
@@ -948,15 +952,15 @@ checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
 
 [[package]]
 name = "tokio"
-version = "1.32.0"
-source = "git+https://github.com/vita-rust/tokio?branch=vita#79e084494b200d354b3352ff795c048efec65f44"
+version = "1.33.0"
+source = "git+https://github.com/vita-rust/tokio?branch=vita#44b0b05024b375298ea68437816a2533a875b355"
 dependencies = [
  "backtrace",
  "bytes",
  "libc",
  "mio",
  "pin-project-lite",
- "socket2 0.5.4",
+ "socket2 0.5.5",
  "tokio-macros",
  "windows-sys",
 ]
@@ -964,7 +968,7 @@ dependencies = [
 [[package]]
 name = "tokio-macros"
 version = "2.1.0"
-source = "git+https://github.com/vita-rust/tokio?branch=vita#79e084494b200d354b3352ff795c048efec65f44"
+source = "git+https://github.com/vita-rust/tokio?branch=vita#44b0b05024b375298ea68437816a2533a875b355"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1109,8 +1113,11 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "libc",
+ "mio",
  "oxhttp",
  "reqwest",
+ "socket2 0.4.10",
+ "socket2 0.5.5",
  "tokio",
  "ureq",
  "vita-newlib-shims",
