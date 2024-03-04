@@ -1,0 +1,23 @@
+name: Build examples
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/vita-rust/vitasdk-rs
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build
+        run: |
+          cargo vita build vpk --release --package vita-std-tests --tests
+          cargo vita build vpk --release
+          mv target/armv7-sony-vita-newlibeabihf/release/deps/*.vpk target/armv7-sony-vita-newlibeabihf/release/
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: examples
+          path: target/armv7-sony-vita-newlibeabihf/release/*.vpk

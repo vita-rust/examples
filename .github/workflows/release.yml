@@ -1,4 +1,4 @@
-name: Build examples
+name: Build and publish examples
 
 on:
   push:
