@@ -952,8 +952,9 @@ checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
 
 [[package]]
 name = "tokio"
-version = "1.33.0"
-source = "git+https://github.com/vita-rust/tokio?branch=vita#44b0b05024b375298ea68437816a2533a875b355"
+version = "1.36.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "61285f6515fa018fb2d1e46eb21223fff441ee8db5d0f1435e8ab4f5cdb80931"
 dependencies = [
  "backtrace",
  "bytes",
@@ -967,8 +968,9 @@ dependencies = [
 
 [[package]]
 name = "tokio-macros"
-version = "2.1.0"
-source = "git+https://github.com/vita-rust/tokio?branch=vita#44b0b05024b375298ea68437816a2533a875b355"
+version = "2.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5b8a1e28f2deaa14e508979454cb3a223b10b938b45af148bc0986de36f1923b"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1131,6 +1133,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "vita-example-vitasdk"
+version = "0.1.0"
+dependencies = [
+ "rand",
+ "vitasdk-sys",
+]
+
+[[package]]
 name = "vita-newlib-shims"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1149,6 +1159,12 @@ dependencies = [
  "serde",
  "serde_json",
 ]
+
+[[package]]
+name = "vitasdk-sys"
+version = "0.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "665d8a491ad572e0ebc103846c4a51e66b641c942391b7241f91c413a3a301a9"
 
 [[package]]
 name = "want"
