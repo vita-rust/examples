@@ -8,7 +8,5 @@ lto = true
 opt-level = 2
 
 [patch.crates-io]
-tokio = { git = "https://github.com/vita-rust/tokio", branch = "vita" }
-
 # Required for rustls
 ring = { git = "https://github.com/vita-rust/ring", branch = "v0.16.20-vita" }

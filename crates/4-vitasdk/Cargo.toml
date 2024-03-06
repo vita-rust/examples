@@ -1,0 +1,19 @@
+[package]
+name = "vita-example-vitasdk"
+version = "0.1.0"
+edition = "2021"
+
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/vita-rust/examples"
+homepage = "https://github.com/vita-rust/examples/crates/4-vitasdk"
+
+description = "VITASDK example"
+
+[dependencies]
+vitasdk-sys = { version = "0.3.3", features = ["SceDisplay_stub", "SceSysmem_stub"] }
+rand = "0.8.5"
+
+[package.metadata.vita]
+title_id = "RUSTTEST4"
+title_name = "VITASDK test"
+assets = "./static"
