@@ -1,13 +1,17 @@
 use std::backtrace::Backtrace;
 use std::fmt::Write;
-use std::panic::PanicInfo;
+use std::panic::{self, PanicInfo};
 use std::thread;
 use std::time::Duration;
 
 mod debug;
 
 pub fn main() {
-    std::panic::set_hook(Box::new(custom_panic_hook));
+    let default_hook = panic::take_hook();
+    panic::set_hook(Box::new(move |info| {
+        custom_panic_hook(info);
+        default_hook(info);
+    }));
 
     let mut screen = debug::screen::DebugScreen::new();
     writeln!(screen, "This not-so-bare-metal is starting to rust!").ok();
@@ -47,7 +51,7 @@ fn custom_panic_hook(info: &PanicInfo<'_>) {
     // (capturing the stack trace allocates memory)
     thread::sleep(Duration::from_secs(2));
 
-    // The backtrace is full of "unknown" for some reason
+    // The backtrace is full of "unknown" as there's no elf to parse on the vita
     let backtrace = Backtrace::force_capture();
     writeln!(screen, "{}", backtrace).ok();
 
