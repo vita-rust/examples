@@ -6,7 +6,7 @@ mod tests {
 
     impl Drop for FsScope {
         fn drop(&mut self) {
-            if fs::try_exists("ux0:/data/.rust_test").unwrap_or(false) {
+            if fs::exists("ux0:/data/.rust_test").unwrap_or(false) {
                 fs::remove_dir_all("ux0:/data/.rust_test").expect("unable to cleanup");
             }
         }
@@ -54,7 +54,7 @@ mod tests {
         assert!(&data == "contents", "invalid file contents");
 
         assert!(
-            fs::try_exists("ux0:/data/.rust_test/file").unwrap(),
+            fs::exists("ux0:/data/.rust_test/file").unwrap(),
             "file does not exist",
         );
 
@@ -69,7 +69,7 @@ mod tests {
 
         fs::remove_file("ux0:/data/.rust_test/file").expect("unable to delete file");
         assert!(
-            !fs::try_exists("ux0:/data/.rust_test/file").unwrap(),
+            !fs::exists("ux0:/data/.rust_test/file").unwrap(),
             "file exists, but should not",
         );
 

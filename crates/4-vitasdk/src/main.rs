@@ -1,6 +1,6 @@
 use std::backtrace::Backtrace;
 use std::fmt::Write;
-use std::panic::{self, PanicInfo};
+use std::panic::{self, PanicHookInfo};
 use std::thread;
 use std::time::Duration;
 
@@ -25,7 +25,7 @@ pub fn main() {
     thread::sleep(Duration::from_secs(5));
 }
 
-fn custom_panic_hook(info: &PanicInfo<'_>) {
+fn custom_panic_hook(info: &PanicHookInfo<'_>) {
     // The current implementation always returns `Some`.
     let location = info.location().unwrap();
 
