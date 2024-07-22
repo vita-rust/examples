@@ -1,0 +1,19 @@
+[package]
+name = "vita-example-sdl-gles"
+version = "0.1.0"
+edition = "2021"
+
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/vita-rust/examples"
+homepage = "https://github.com/vita-rust/examples/crates/4-vitasdk"
+
+description = "VITASDK example"
+
+[dependencies]
+rand = "0.8.5"
+gl = "0.10.0"
+sdl2 = { version = "0.35.2", features = ["use-pkgconfig"] }
+
+[package.metadata.vita]
+title_id = "RUSTTEST5"
+title_name = "SDL+GL test"

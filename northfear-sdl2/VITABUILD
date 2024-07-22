@@ -1,0 +1,28 @@
+pkgname=sdl2
+pkgver=2.30.2
+pkgrel=1
+gitrev=0867aceb28a493b489f54a3407a3b820b092206a
+url='https://www.libsdl.org'
+source=(
+  "https://github.com/Northfear/SDL/archive/${gitrev}.tar.gz"
+ )
+sha256sums=(
+  SKIP
+)
+
+prepare() {
+  cd "SDL-${gitrev}"
+}
+
+build() {
+  cd "SDL-${gitrev}"
+  mkdir build && cd build
+  cmake .. -DCMAKE_TOOLCHAIN_FILE=$VITASDK/share/vita.toolchain.cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_BUILD_TYPE=Release -DSDL_TEST=OFF  -DVIDEO_VITA_VGL=ON
+  make -j$(nproc)
+}
+
+package () {
+  cd "SDL-${gitrev}"
+  cd build
+  make DESTDIR=$pkgdir install
+}
