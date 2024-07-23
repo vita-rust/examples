@@ -22,7 +22,7 @@ jobs:
           chown -R 1000:1000 northfear-sdl2
           cd northfear-sdl2
           sudo --preserve-env=VITASDK -u \#1000 vita-makepkg
-          vdpm sdl2-2.30.2-1-arm.tar.xz
+          vdpm sdl2-*-arm.tar.xz
       - name: Build
         run: |
           cargo vita build vpk --release --package vita-std-tests --tests
