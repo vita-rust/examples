@@ -1,3 +1,16 @@
+// These linker flags are only necessary with Northfear SDL2 fork
+#[link(name = "SDL2", kind = "static")]
+#[link(name = "vitaGL", kind = "static")]
+#[link(name = "vitashark", kind = "static")]
+#[link(name = "SceShaccCg_stub", kind = "static")]
+#[link(name = "mathneon", kind = "static")]
+#[link(name = "SceShaccCgExt", kind = "static")]
+#[link(name = "taihen_stub", kind = "static")]
+#[link(name = "SceKernelDmacMgr_stub", kind = "static")]
+#[link(name = "SceIme_stub", kind = "static")]
+extern "C" {}
+
+
 use crate::game_of_life::{PLAYGROUND_HEIGHT, PLAYGROUND_WIDTH, SQUARE_SIZE};
 use sdl2::keyboard::Keycode;
 use sdl2::mouse::MouseButton;
